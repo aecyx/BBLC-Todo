@@ -1,5 +1,5 @@
 #variables
-task = []
+tasks = []
 #functions
 
 #write code here
