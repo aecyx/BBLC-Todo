@@ -1,8 +1,12 @@
 #variables
 tasks = []
+
 #functions
 
-#this is where Veer and Abdullah are going
-#to make some functions.
+def add_task(description):
+    tasks.append([{"description" : description, "completed" : False}])
 
+def remove_task(task_index):
+    del tasks[task_index]
 #write code here
+    
