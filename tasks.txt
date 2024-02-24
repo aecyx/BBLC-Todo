@@ -1,0 +1,3 @@
+Vacuum the livingroom,False
+Do the dishes,False
+Take out the trash,False

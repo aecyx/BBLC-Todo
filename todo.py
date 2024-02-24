@@ -1,16 +1,15 @@
-#variables
+
+#A list variable for storing the tasks from the user.
 tasks = []
 
-#functions
-
 def add_task(description):
-    tasks.append([{"description" : description, "completed" : False}])
-
-def remove_task(task_index):
-    del tasks[task_index]
+    tasks.append({"description": description, "completed": False})
 
 def complete_task(task_index):
     tasks[task_index]["completed"] = True
+
+def remove_task(task_index):
+    del tasks[task_index]
 
 def reset_tasks():
     for task in tasks:
@@ -19,7 +18,7 @@ def reset_tasks():
 def save_tasks(filename):
     with open(filename, "w") as f:
         for task in tasks:
-            f.write(task[:"description"] + "," + str(task["completed"]) + "\n")
+            f.write(task["description"] + "," + str(task["completed"]) + "\n")
 
 def load_tasks(filename):
     tasks.clear()
@@ -43,21 +42,21 @@ def main():
         choice = input("Enter your choice (add/complete/remove/reset/quit): ").lower()
 
         if choice == "add":
-            description = input("Enter task: ")
+            description = input("Enter task description: ")
             add_task(description)
         
         elif choice == "complete":
             task_index = int(input("Enter task index to complete: ")) - 1
             complete_task(task_index)
-
-        elif choice == "remove":
-            task_index = int(input("Enter task index to remove:")) -1
-            remove_task(task_index)
-
+        
         elif choice == "reset":
             reset_tasks()
-            print("All tasks have been reset.")
+            print("Tasks completion status reset.")
         
+        elif choice == "remove":
+            task_index = int(input("Enter task index to remove: ")) - 1
+            remove_task(task_index)
+
         elif choice == "quit":
             save_tasks(filename)
             print("Quitting...")
@@ -66,5 +65,5 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-__name__ == "__main__":
-main()
+if __name__ == "__main__":
+    main()
